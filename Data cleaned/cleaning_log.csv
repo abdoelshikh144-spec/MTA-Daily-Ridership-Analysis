@@ -1,0 +1,14 @@
+step,check,result,action
+2,Date parsed to datetime,OK,converted
+2,values that failed numeric conversion,0,none
+3,duplicate dates,0,nothing to remove
+3,missing calendar days,0,none
+4,total missing values,0,kept as NULL (never replaced by 0)
+5,negative values,0,none
+5,columns that contain zeros,2,inspect below before deciding
+5,Staten Island Railway zero-ridership days,32,kept as reported; confirm against the data dictionary (do not treat as missing)
+6,expected rows = days x services,"11,942",validated
+6,totals reconcile with source file,match,validated
+6,"latest date check (Subways 70%, Buses 58%)",2024-10-31,validated
+6,CSV files saved,output,"ridership.csv, service_dim.csv, date_dim.csv"
+6,SQL Server load,localhost / MTA_Ridership,"date_dim, service_dim, ridership loaded"
